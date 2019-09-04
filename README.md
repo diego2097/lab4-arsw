@@ -2,7 +2,7 @@
 
 - Se integraron las clases del proyecto anterior como se puede observar la anterior. 
 
-![alt text](https://github.com/diego2097/arep-lab/blob/master/apidocs/diseno.PNG "Directorio")
+![alt text](https://github.com/diego2097/lab4-arsw/blob/master/img/carpetas.PNG "Directorio")
 
 - Modificamos la clase InMemoryBlueprintPersistence para ingresar por defecto 4 blueprints con dos con el mismo autor
 
@@ -59,11 +59,11 @@ public class BlueprintAPIController {
 - Al compilar el proyecto obtenemos lo siguiente 
 
 
-![alt text](https://github.com/diego2097/arep-lab/blob/master/apidocs/diseno.PNG "Directorio")
+![alt text](https://github.com/diego2097/lab4-arsw/blob/master/img/Spring-run.PNG "Directorio")
 
 - La lista en formato de json 
 
-![alt text](https://github.com/diego2097/arep-lab/blob/master/apidocs/diseno.PNG "Directorio")
+![alt text](https://github.com/diego2097/lab4-arsw/blob/master/img/blueprints_lista.PNG "Directorio")
 
 
 - Despues agregamos la funcionalidad para poder ver los blueprints de un autor en especifico. agregando el recurso /blueprints/{author}, con el error indicado, si no encuentra el autor:
