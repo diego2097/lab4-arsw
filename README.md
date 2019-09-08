@@ -175,6 +175,7 @@ realizando el curl con la peticion PUT:
 ![alt text](https://github.com/diego2097/lab4-arsw/blob/master/img/CurlPut.PNG "CURL PUT")
 
 
+restultado en el navegador: 
 ![alt text](https://github.com/diego2097/lab4-arsw/blob/master/img/Put.PNG " Resultado")
 
 
