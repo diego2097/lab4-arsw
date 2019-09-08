@@ -1,10 +1,10 @@
 # Part I
 
-- Se integraron las clases del proyecto anterior como se puede observar la anterior. 
+- Se integraron las clases del proyecto anterior como se puede observar en la imagen
 
 ![alt text](https://github.com/diego2097/lab4-arsw/blob/master/img/carpetas.PNG "Directorio")
 
-- Modificamos la clase InMemoryBlueprintPersistence para ingresar por defecto 4 blueprints con dos con el mismo autor
+- Modificamos la clase InMemoryBlueprintPersistence para ingresar por defecto 4 blueprints con dos de ellos con el mismo autor
 
 ```java 
    public InMemoryBlueprintPersistence() {
