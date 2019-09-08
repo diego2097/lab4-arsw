@@ -132,7 +132,21 @@ implementado el metodo post:
 
     }
 ```
-consultando: 
+realizando el post con curl: 
+![alt text](https://github.com/diego2097/lab4-arsw/blob/master/img/curl.PNG "CURL")
+
+![alt text](https://github.com/diego2097/lab4-arsw/blob/master/img/curlrestultado.PNG "curl Respuesta")
+
+comprobando que se haya agregado en blueprints:
+![alt text](https://github.com/diego2097/lab4-arsw/blob/master/img/blueprints.PNG "blueprints")
+
+
+comprobado que se haya agregado consultando el autor y el plano: 
+
+![alt text](https://github.com/diego2097/lab4-arsw/blob/master/img/analtasio.PNG "consultando autor y plano")
+
+
+
 
 
 
