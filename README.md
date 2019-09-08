@@ -37,7 +37,6 @@ public class BlueprintAPIController {
 
     @Autowired
     BlueprintsServices service = null;
-
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> manejadorGetRecursoXX() {
         try {
@@ -146,8 +145,37 @@ comprobado que se haya agregado consultando el autor y el plano:
 ![alt text](https://github.com/diego2097/lab4-arsw/blob/master/img/analtasio.PNG "consultando autor y plano")
 
 
+### Put 
+
+realizando el metodo en la clase BlueprintAPIController: 
+```java
+    @RequestMapping(path =  "{author}/{bpname}", method = RequestMethod.PUT)
+    public ResponseEntity<?> update(@RequestBody Blueprint blueprint,@PathVariable(name = "author") String author, @PathVariable(name = "bpname") String bname) {
+        try {
+            //obtener datos que se enviarán a través del API
+            
+            service.uptade(author, bname,blueprint);
+           
+            
+            
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+```
+se realiza la transicion y la imprementacion de la clase InMemoryBlueprintPersistence
+```java
+@Override
+    public void uptade(String author, String bname, Blueprint blueprint) {
+        Tuple<String,String> llave=new Tuple(author,bname);
+        blueprints.remove(llave);
+        llave=new Tuple(blueprint.getAuthor(),blueprint.getName());
+        blueprints.put(llave, blueprint);
+    }
+}
+```
+realizando el curl con la peticion PUT: 
+![alt text](https://github.com/diego2097/lab4-arsw/blob/master/img/CurlPut.PNG "CURL PUT")
 
 
+![alt text](https://github.com/diego2097/lab4-arsw/blob/master/img/Put.PNG " Resultado")
 
 
 
