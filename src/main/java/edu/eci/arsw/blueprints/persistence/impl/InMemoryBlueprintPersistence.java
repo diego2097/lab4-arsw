@@ -83,7 +83,8 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
     }
 
     @Override
-    public void uptade(String author, String bname, Blueprint blueprint) {
+    public void uptade(String author, String bname, Blueprint blueprint)throws BlueprintNotFoundException {
+        getBlueprint(author,bname);//esto es para checkar que exista el blueprint
         Tuple<String,String> llave=new Tuple(author,bname);
         blueprints.remove(llave);
         llave=new Tuple(blueprint.getAuthor(),blueprint.getName());

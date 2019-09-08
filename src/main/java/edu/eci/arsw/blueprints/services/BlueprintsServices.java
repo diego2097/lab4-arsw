@@ -60,8 +60,8 @@ public class BlueprintsServices {
         return bpp.getBlueprintsByAuthor(author);
     }
 
-    public void uptade(String author, String bname, Blueprint blueprint) {
-      bpp.uptade( author, bname,blueprint);
+    public void uptade(String author, String bname, Blueprint blueprint) throws BlueprintNotFoundException {
+      bpp.uptade(author, bname,blueprint);
     }
     
 }

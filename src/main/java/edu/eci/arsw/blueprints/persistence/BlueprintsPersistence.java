@@ -48,5 +48,11 @@ public interface BlueprintsPersistence {
      */
     public Set<Blueprint> getAllBlueprints();
        
-    
+    /**
+     * Este metodo actualiza el blueprint 
+     * @param author El autor del blueprint 
+     * @param bname El nombre del blueprint 
+     * @param blueprint El blueprint nuevo que se desea reemplazar
+     */
+    public void uptade(String author, String bname, Blueprint blueprint) throws BlueprintNotFoundException;
 }

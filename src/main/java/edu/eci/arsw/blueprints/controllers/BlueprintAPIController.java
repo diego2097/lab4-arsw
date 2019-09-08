@@ -44,7 +44,7 @@ public class BlueprintAPIController {
 
         } catch (Exception ex) {
             Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("400 bad request", HttpStatus.NOT_FOUND);
         }
     }
 
@@ -94,7 +94,7 @@ public class BlueprintAPIController {
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception ex) {
             //Logger.getLogger(XXController.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("HTTP 403 Error al insertar blueprint", HttpStatus.FORBIDDEN);
         }
 
     }
@@ -106,19 +106,12 @@ public class BlueprintAPIController {
             //obtener datos que se enviarán a través del API
             
             service.uptade(author, bname,blueprint);
-           
-            
-            
+
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
 
-        } catch (AuthorNotFoundException ex) {
-
-            Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("HTTP 404 Author not found", HttpStatus.NOT_FOUND);
         } catch (BlueprintNotFoundException ex) {
             Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("HTTP 404 Blueprint not found", HttpStatus.NOT_FOUND);
         }
     }
-
 }
