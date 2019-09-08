@@ -117,6 +117,22 @@ public class BlueprintAPIController {
         }
     }
 ```
+## Parte 2
+implementado el metodo post: 
+```java
+@RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<?> agregarBlueprint(@RequestBody Blueprint blueprint) {
+        try {
+            service.addNewBlueprint(blueprint);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (Exception ex) {
+            //Logger.getLogger(XXController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla", HttpStatus.FORBIDDEN);
+        }
+
+    }
+```
+consultando: 
 
 
 
