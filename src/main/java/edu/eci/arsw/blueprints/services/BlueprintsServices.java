@@ -59,5 +59,9 @@ public class BlueprintsServices {
     public Set<Blueprint> getBlueprintsByAuthor(String author) throws AuthorNotFoundException{
         return bpp.getBlueprintsByAuthor(author);
     }
+
+    public void uptade(String author, String bname, Blueprint blueprint) {
+      bpp.uptade( author, bname,blueprint);
+    }
     
 }

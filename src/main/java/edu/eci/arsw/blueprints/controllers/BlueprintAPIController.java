@@ -98,5 +98,27 @@ public class BlueprintAPIController {
         }
 
     }
+    
+
+    @RequestMapping(path =  "{author}/{bpname}", method = RequestMethod.PUT)
+    public ResponseEntity<?> update(@RequestBody Blueprint blueprint,@PathVariable(name = "author") String author, @PathVariable(name = "bpname") String bname) {
+        try {
+            //obtener datos que se enviarán a través del API
+            
+            service.uptade(author, bname,blueprint);
+           
+            
+            
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+
+        } catch (AuthorNotFoundException ex) {
+
+            Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("HTTP 404 Author not found", HttpStatus.NOT_FOUND);
+        } catch (BlueprintNotFoundException ex) {
+            Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("HTTP 404 Blueprint not found", HttpStatus.NOT_FOUND);
+        }
+    }
 
 }

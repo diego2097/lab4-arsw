@@ -14,6 +14,14 @@ public class Blueprint {
     private List<Point> points=null;
 
     private String name=null;
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
             
     public Blueprint(String author,String name,Point[] pnts){
         this.author=author;
@@ -89,6 +97,13 @@ public class Blueprint {
         }
         
         return true;
+    }
+
+    public void setBlueprint(Blueprint blueprint) {
+        this.setPoints(blueprint.getPoints());
+        this.setAuthor(blueprint.getAuthor());
+        this.setName(blueprint.getName());
+        
     }
     
     

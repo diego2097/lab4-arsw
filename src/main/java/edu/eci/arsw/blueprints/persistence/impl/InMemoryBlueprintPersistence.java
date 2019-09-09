@@ -81,4 +81,12 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
        };
        return retornar;
     }
+
+    @Override
+    public void uptade(String author, String bname, Blueprint blueprint) {
+        Tuple<String,String> llave=new Tuple(author,bname);
+        blueprints.remove(llave);
+        llave=new Tuple(blueprint.getAuthor(),blueprint.getName());
+        blueprints.put(llave, blueprint);
+    }
 }
