@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  *
@@ -40,67 +41,62 @@ public class BlueprintAPIController {
             Gson gson = new Gson();
             String JSON = gson.toJson(set);
             return new ResponseEntity<>(JSON, HttpStatus.ACCEPTED);
-            
+
         } catch (Exception ex) {
             Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error bla bla bla", HttpStatus.NOT_FOUND);
         }
     }
 
-    @RequestMapping(value="/{author}",method = RequestMethod.GET)
-    public ResponseEntity<?> getBlueprintsByAuthor(@PathVariable(name="author") String author) {
+    @RequestMapping(path = "{author}", method = RequestMethod.GET)
+    public ResponseEntity<?> getBlueprintsByAuthor(@PathVariable(name = "author") String author) {
         try {
             //obtener datos que se enviarán a través del API
             Set<Blueprint> set = service.getBlueprintsByAuthor(author);
-            
+
             Gson gson = new Gson();
             String JSON = gson.toJson(set);
-            
+
             return new ResponseEntity<>(JSON, HttpStatus.ACCEPTED);
-            
-            
-        }catch (AuthorNotFoundException ex) {
-            
+
+        } catch (AuthorNotFoundException ex) {
+
             Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("HTTP 404 Author not found", HttpStatus.NOT_FOUND);
         }
     }
-    
-    @RequestMapping(value="/{author}/{bpname}",method = RequestMethod.GET)
-    public ResponseEntity<?> getBlueprintsByAuthorAndBname(@PathVariable(name="author") String author,@PathVariable(name="bpname") String bname) {
+
+    @RequestMapping(path =  "{author}/{bpname}", method = RequestMethod.GET)
+    public ResponseEntity<?> getBlueprintsByAuthorAndBname(@PathVariable(name = "author") String author, @PathVariable(name = "bpname") String bname) {
         try {
             //obtener datos que se enviarán a través del API
-            Blueprint bp = service.getBlueprint(author,bname);
-            
+            Blueprint bp = service.getBlueprint(author, bname);
+
             Gson gson = new Gson();
             String JSON = gson.toJson(bp);
-            
+
             return new ResponseEntity<>(JSON, HttpStatus.ACCEPTED);
-            
-            
-        }catch (AuthorNotFoundException ex ) {
-            
+
+        } catch (AuthorNotFoundException ex) {
+
             Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("HTTP 404 Author not found", HttpStatus.NOT_FOUND);
-        }
-        catch(BlueprintNotFoundException ex){
+        } catch (BlueprintNotFoundException ex) {
             Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("HTTP 404 Blueprint not found", HttpStatus.NOT_FOUND);
         }
     }
-    
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<?> agregarBlueprint(@RequestBody Blueprint blueprint) {
+        try {
+            service.addNewBlueprint(blueprint);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (Exception ex) {
+            //Logger.getLogger(XXController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla", HttpStatus.FORBIDDEN);
+        }
+
+    }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
