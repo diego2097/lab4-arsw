@@ -178,5 +178,20 @@ realizando el curl con la peticion PUT:
 restultado en el navegador: 
 ![alt text](https://github.com/diego2097/lab4-arsw/blob/master/img/Put.PNG " Resultado")
 
+# Part III
 
+Region critica:  esta se ecuentra en los serivicios de update para la solucionar este se coloco en el InMemoryBlueprintPersistence el Map blueprints volatile, adicionalmente  se sincronizo el acceso al elemento en el metodo update de la misma clase: 
 
+```java
+private volatile Map<Tuple<String, String>, Blueprint> blueprints = new HashMap<>();
+ public void uptade(String author, String bname, Blueprint blueprint) throws BlueprintNotFoundException {
+        getBlueprint(author, bname);//esto es para checkar que exista el blueprint
+        Tuple<String, String> llave = new Tuple(author, bname);
+        synchronized (blueprints.get(llave)) {
+            blueprints.remove(llave);
+            llave = new Tuple(blueprint.getAuthor(), blueprint.getName());
+            blueprints.put(llave, blueprint);
+        }
+
+    }
+```
